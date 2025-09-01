@@ -160,7 +160,14 @@ export default function Home() {
           Si el archivo contiene “antes” o “despues” en el nombre, se mostrará la etiqueta.
         </p>
 
-        <GalleryCarousel />
+        <GalleryCarousel
+          bucket="bymariana"        // tu bucket
+          prefix="gallery"          // carpeta opcional dentro del bucket
+          limit={30}                // máximo de imágenes
+          intervalMs={4500}         // autoplay (0 para desactivar)
+          alt="Antes y después - Mariana"
+          className="h-[380px] md:h-[520px] w-full"
+        />
       </section>
 
       {/* TESTIMONIOS */}
