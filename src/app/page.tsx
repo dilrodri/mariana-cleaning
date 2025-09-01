@@ -3,7 +3,7 @@
 
 import { motion } from "framer-motion";
 import { Calendar, Phone, Play, Star, FileText } from "lucide-react";
-import CalendlyWidget from "./components/Calendly";
+import Calendly from "./components/Calendly";
 export default function Home() {
   const palette = {
     rose: "var(--rose)",
@@ -103,21 +103,23 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* CALENDARIO */}
-      <section id="booking" className="py-16" style={{ background: "var(--cream)" }}>
-        <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
-          <p className="mt-2 opacity-80">
-            Selecciona un día disponible para una visita de presupuesto en tu hogar.
-          </p>
-          <div className="mt-6 rounded-2xl overflow-hidden shadow bg-white">
-            <CalendlyWidget
-              url="https://calendly.com/bymarianaclean?background_color=f7c7d7&text_color=f175d5&primary_color=ff00a8"
-              height={700}
-            />
-          </div>
-        </div>
-      </section>
+       {/* CALENDARIO */}
+       <section id="booking" className="py-16" style={{ background: "var(--cream)" }}>
+         <div className="mx-auto max-w-5xl px-6">
+           <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
+           <p className="mt-2 opacity-80">
+             Selecciona un día disponible para una visita de presupuesto en tu hogar.
+           </p>
+           <div className="mt-6 rounded-2xl overflow-hidden shadow">
+             <Calendly
+               height={1100}
+               bg="F6E6DA"      // cream
+               text="2B2B2B"    // charcoal
+               primary="D4AF37" // gold
+             />
+           </div>
+         </div>
+       </section>
 
       {/* GALERÍA */}
       <section className="mx-auto max-w-6xl px-6 py-16">
