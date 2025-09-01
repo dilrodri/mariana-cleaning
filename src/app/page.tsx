@@ -40,8 +40,8 @@ export default function Home() {
             </h1>
 
             <p className="mt-4 text-lg md:text-xl">
-              Limpieza profesional de hogares, Airbnb y post-construcción. Agenda
-              tu visita para presupuesto y deja tu lugar brillante ✨
+              Limpieza profesional de hogares, Airbnb y post-construcción.
+              Agenda tu visita para presupuesto y deja tu lugar brillante ✨
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -56,21 +56,17 @@ export default function Home() {
               <a
                 href="tel:+18138179146"
                 className="rounded-2xl px-5 py-3 border-2"
-                style={{
-                  borderColor: palette.charcoal,
-                  color: palette.charcoal,
-                }}
+                style={{ borderColor: palette.charcoal, color: palette.charcoal }}
               >
                 <Phone className="inline mr-2 h-5 w-5" /> Llamar 813 8179146
               </a>
 
+              {/* ⬇️ ESTE ERA EL ENLACE MAL CERRADO; ahora está correcto */}
               <a
                 href="#videos"
                 className="rounded-2xl px-5 py-3 border-2"
                 style={{ borderColor: palette.charcoal, color: palette.charcoal }}
               >
-                <Play className="inline mr-2 h-5 w-5" /> Ver videos
-              </a>
                 <Play className="inline mr-2 h-5 w-5" /> Ver videos
               </a>
             </div>
@@ -92,17 +88,29 @@ export default function Home() {
 
           {/* FOTO HERO */}
           <div className="relative">
-            <div className="aspect-[4/5] w-full rounded-3xl shadow-xl overflow-hidden"
+            <div
+              className="aspect-[4/5] w-full rounded-3xl shadow-xl overflow-hidden"
               style={{ background: "var(--cream)" }}
             >
+              {/* Usa un JPG sin “cuadriculado”, o pon tu URL de Supabase */}
               <Image
-                src="/hero/mariana-1.png"
+                src="/hero/mariana-1.jpg"   // <-- asegúrate que exista en /public/hero
                 alt="Mariana Aular - Cleaning Services"
                 width={600}
                 height={750}
-                className="w-full h-full object-cover rounded-3xl shadow-xl"
-                priority   // carga primero porque está en el hero
+                className="w-full h-full object-cover"
+                priority
               />
+              {/* Si usas una URL pública de Supabase, añade unoptimized:
+              <Image
+                src="https://...supabase.co/storage/v1/object/public/bymariana/hero/mariana-1.jpg"
+                alt="Mariana Aular - Cleaning Services"
+                width={600}
+                height={750}
+                className="w-full h-full object-cover"
+                priority
+                unoptimized
+              /> */}
             </div>
           </div>
         </div>
@@ -137,7 +145,7 @@ export default function Home() {
           <p className="mt-2 opacity-80">
             Selecciona un día disponible para una visita de presupuesto en tu hogar.
           </p>
-      
+
           <div className="mt-6">
             <Calendly bg="FFFFFF" text="2B2B2B" primary="D4AF37" />
           </div>
@@ -151,7 +159,7 @@ export default function Home() {
           Fotos reales de limpieza. Sube imágenes a <code>bymariana/gallery/</code> en Supabase.
           Si el archivo contiene “antes” o “despues” en el nombre, se mostrará la etiqueta.
         </p>
-      
+
         <GalleryCarousel />
       </section>
 
@@ -165,21 +173,25 @@ export default function Home() {
         </div>
       </section>
 
-     {/* VIDEOS */}
+      {/* VIDEOS */}
       <section id="videos" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Videos</h2>
-        <p className="mt-2 opacity-80">
-          Aquí insertaremos los reels y videos de limpieza.
-        </p>
-      
+        <p className="mt-2 opacity-80">Aquí insertaremos los reels y videos de limpieza.</p>
+
         {/* Video incrustado */}
         <div className="mt-6 rounded-2xl overflow-hidden shadow-lg">
           <video
             className="w-full h-auto"
             controls
-            poster="/placeholder.jpg"  // opcional: imagen previa
+            playsInline
+            preload="metadata"
+            // poster="/placeholder.jpg" // opcional: imagen previa
           >
-            <source src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/videos/video%20despues.mp4" />
+            <source
+              src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/videos/video%20despues.mp4"
+              type="video/mp4"
+            />
+            Tu navegador no soporta el tag de video.
           </video>
         </div>
       </section>
@@ -192,9 +204,7 @@ export default function Home() {
             “Limpieza profesional que transforma tu hogar en salud, bienestar y
             cuidado real.”
           </p>
-          <a href="#" className="inline-block mt-4 underline">
-            Ver CV (pronto)
-          </a>
+          <a href="#" className="inline-block mt-4 underline">Ver CV (pronto)</a>
         </div>
       </section>
 
@@ -203,9 +213,7 @@ export default function Home() {
         <h2 className="text-2xl md:text-3xl font-semibold">Contacto</h2>
         <p className="mt-2">
           Tampa Bay, FL — Tel:{" "}
-          <a className="underline" href="tel:+18138179146">
-            813 8179146
-          </a>
+          <a className="underline" href="tel:+18138179146">813 8179146</a>
         </p>
         <div className="mt-4 flex gap-3">
           <a
