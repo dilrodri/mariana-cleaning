@@ -179,8 +179,7 @@ export default function Home() {
             controls
             poster="/placeholder.jpg"  // opcional: imagen previa
           >
-            <source src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/videos/bymariana.mp4" />
-            Tu navegador no soporta el tag de video.
+            <source src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/videos/video%20despues.mp4" />
           </video>
         </div>
       </section>
