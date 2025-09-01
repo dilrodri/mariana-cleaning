@@ -10,7 +10,7 @@ type CalendlyProps = {
 
 export default function Calendly({
   height = 1100,
-  bg = "F6E6DA",
+  bg = "FFFFFF",
   text = "2B2B2B",
   primary = "D4AF37",
 }: CalendlyProps) {
