@@ -104,25 +104,12 @@ export default function Home() {
       </section>
 
        {/* CALENDARIO */}
-       <section id="booking" className="py-16" style={{ background: "#FFFFFF" }}>
-         <div className="mx-auto max-w-5xl px-6">
-           <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
-           <p className="mt-2 opacity-80">
-             Selecciona un día disponible para una visita de presupuesto en tu hogar.
-           </p>
-
-           {/* sin sombra ni bordes para que quede “ajustado” */}
-           <div className="mt-6">
-             <Calendly
-               height={1050}      // ajusta si ves scroll; prueba 1000-1150
-               bg="FFFFFF"        // BLANCO
-               text="2B2B2B"      // texto oscuro
-               primary="D4AF37"   // dorado
-             />
-           </div>
+       <section id="booking" className="py-0" style={{ background: "#FFFFFF" }}>
+         <div className="mx-auto max-w-5xl px-0">
+           <Calendly height={950} bg="FFFFFF" text="2B2B2B" primary="D4AF37" />
          </div>
        </section>
-
+      
       {/* GALERÍA */}
       <section className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Antes y Después</h2>
