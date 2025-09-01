@@ -1,34 +1,29 @@
 "use client";
-import { useEffect } from "react";
 
-declare global {
-  interface Window {
-    Calendly?: any;
-  }
-}
+import Script from "next/script";
+import { useRef } from "react";
 
-export default function Calendly() {
-  useEffect(() => {
-    const s = document.createElement("script");
-    s.src = "https://assets.calendly.com/assets/external/widget.js";
-    s.async = true;
-    document.body.appendChild(s);
-    return () => document.body.removeChild(s);
-  }, []);
+type CalendlyProps = {
+  url: string;
+  height?: number;
+};
+
+export default function CalendlyWidget({ url, height = 700 }: CalendlyProps) {
+  const ref = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="rounded-2xl overflow-hidden shadow">
+    <>
       <div
-        className="
-          calendly-inline-widget
-          w-full
-          h-[1250px]   /* <-- aumentado para que no aparezca la barra */
-          sm:h-[1200px]
-          md:h-[1100px]
-          lg:h-[1050px]
-        "
-        data-url="https://calendly.com/bymarianaclean?background_color=#F6E6DA&text_color=#2B2B2B&primary_color=D4AF37"
+        className="calendly-inline-widget"
+        data-url={url}
+        style={{ minWidth: 320, height }}
+        ref={ref}
       />
-    </div>
+      {/* Carga el script de Calendly correctamente en Next */}
+      <Script
+        src="https://assets.calendly.com/assets/external/widget.js"
+        strategy="lazyOnload"
+      />
+    </>
   );
 }
