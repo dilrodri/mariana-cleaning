@@ -16,13 +16,10 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className="w-full">
       {/* HERO */}
-      <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--rose)" }}
-      >
-        <div className="mx-auto max-w-6xl px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <section className="relative overflow-hidden" style={{ background: "var(--rose)" }}>
+        <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6 py-14 md:py-16 grid md:grid-cols-2 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,7 +58,6 @@ export default function Home() {
                 <Phone className="inline mr-2 h-5 w-5" /> Llamar 813 8179146
               </a>
 
-              {/* ⬇️ ESTE ERA EL ENLACE MAL CERRADO; ahora está correcto */}
               <a
                 href="#videos"
                 className="rounded-2xl px-5 py-3 border-2"
@@ -76,11 +72,7 @@ export default function Home() {
             </div>
 
             <div className="mt-6">
-              <a
-                href="#cv"
-                className="underline"
-                style={{ color: palette.charcoal }}
-              >
+              <a href="#cv" className="underline" style={{ color: palette.charcoal }}>
                 <FileText className="inline h-4 w-4 mr-1" /> Ver CV de Mariana
               </a>
             </div>
@@ -90,35 +82,23 @@ export default function Home() {
           <div className="relative">
             <div
               className="aspect-[4/5] w-full rounded-3xl shadow-xl overflow-hidden"
-              style={{ background: "transparent" }}   // ← antes: var(--cream)
+              style={{ background: "var(--cream)" }}
             >
-              <Image
-                </div> src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/hero/mariana.png"   // <-- asegúrate que exista en /public/hero
-                alt="Mariana Aular - Cleaning Services"
-                width={600}
-                height={750}
-                className="w-full h-full object-cover"
-                priority
-              />
-            </div>
-
-              {/* Si usas una URL pública de Supabase, añade unoptimized:
               <Image
                 src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/hero/mariana.png"
                 alt="Mariana Aular - Cleaning Services"
-                width={600}
-                height={750}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
                 priority
                 unoptimized
-              /> */}
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* SERVICIOS */}
-      <section className="mx-auto max-w-6xl px-6 py-14">
+      <section className="mx-auto w-full max-w-[1200px] px-4 md:px-6 py-12 md:py-14">
         <h2 className="text-2xl md:text-3xl font-semibold mb-6">Servicios</h2>
         <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
@@ -127,11 +107,7 @@ export default function Home() {
             ["Post-Construcción", "Retiro de polvo fino y acabados."],
             ["Move-In / Move-Out", "Listo para entrar o entregar."],
           ].map(([t, d]) => (
-            <li
-              key={t}
-              className="rounded-2xl p-5 shadow-sm"
-              style={{ background: "var(--cream)" }}
-            >
+            <li key={t} className="rounded-2xl p-5 shadow-sm" style={{ background: "var(--cream)" }}>
               <div className="font-semibold">{t}</div>
               <p className="mt-1 text-sm opacity-80">{d}</p>
             </li>
@@ -139,61 +115,72 @@ export default function Home() {
         </ul>
       </section>
 
+      {/* GALERÍA (Antes/Después) */}
+      <section className="py-14" style={{ background: "var(--cream)" }}>
+        <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl font-semibold">Antes y Después</h2>
+          <p className="mt-2 opacity-80">
+            Fotos reales de limpieza. (Sube imágenes a <code>bymariana/gallery/</code> en Supabase).
+          </p>
+          <div className="mt-6">
+            <GalleryCarousel
+              bucket="bymariana"
+              prefix="gallery"
+              limit={30}
+              intervalMs={4500}
+              alt="Antes y después - Mariana"
+              className="h-[380px] md:h-[520px] w-full"
+            />
+          </div>
+
+          {/* CTA cerca del bloque visual */}
+          <div className="mt-6">
+            <a
+              href="#booking"
+              className="inline-block rounded-2xl px-5 py-3 text-white shadow"
+              style={{ background: "#2B2B2B" }}
+            >
+              Reservar visita de presupuesto
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CALENDARIO */}
-      <section id="booking" className="py-16" style={{ background: "var(--cream)" }}>
-        <div className="mx-auto max-w-5xl px-6">
+      <section id="booking" className="py-16">
+        <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
           <p className="mt-2 opacity-80">
             Selecciona un día disponible para una visita de presupuesto en tu hogar.
           </p>
 
-          <div className="mt-6">
+          {/* Tarjeta blanca centrada */}
+          <div className="mt-6 mx-auto max-w-[840px] rounded-2xl overflow-hidden shadow bg-white">
             <Calendly bg="FFFFFF" text="2B2B2B" primary="D4AF37" />
           </div>
         </div>
       </section>
 
-      {/* GALERÍA */}
-      <section className="mx-auto max-w-6xl px-6 py-16">
-        <h2 className="text-2xl md:text-3xl font-semibold">Antes y Después</h2>
-        <p className="mt-2 opacity-80">
-          Fotos reales de limpieza. Sube imágenes a <code>bymariana/gallery/</code> en Supabase.
-          Si el archivo contiene “antes” o “despues” en el nombre, se mostrará la etiqueta.
-        </p>
-
-        <GalleryCarousel
-          bucket="bymariana"        // tu bucket
-          prefix="gallery"          // carpeta opcional dentro del bucket
-          limit={30}                // máximo de imágenes
-          intervalMs={4500}         // autoplay (0 para desactivar)
-          alt="Antes y después - Mariana"
-          className="h-[380px] md:h-[520px] w-full"
-        />
-      </section>
-
       {/* TESTIMONIOS */}
       <section className="py-16" style={{ background: "var(--cream)" }}>
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Testimonios</h2>
-          <p className="mt-2 opacity-80">
-            Los clientes pueden dejar reseñas y dar “like”.
-          </p>
+          <p className="mt-2 opacity-80">Los clientes pueden dejar reseñas y dar “like”.</p>
         </div>
       </section>
 
       {/* VIDEOS */}
-      <section id="videos" className="mx-auto max-w-6xl px-6 py-16">
+      <section id="videos" className="mx-auto w-full max-w-[1200px] px-4 md:px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Videos</h2>
         <p className="mt-2 opacity-80">Aquí insertaremos los reels y videos de limpieza.</p>
 
-        {/* Video incrustado */}
         <div className="mt-6 rounded-2xl overflow-hidden shadow-lg">
           <video
             className="w-full h-auto"
             controls
             playsInline
             preload="metadata"
-            // poster="/placeholder.jpg" // opcional: imagen previa
+            // poster="/placeholder.jpg"
           >
             <source
               src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/videos/bymariana1-2.mp4"
@@ -206,18 +193,17 @@ export default function Home() {
 
       {/* SOBRE MARIANA + CV */}
       <section id="cv" className="py-16" style={{ background: "var(--cream)" }}>
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Sobre Mariana</h2>
           <p className="mt-2 opacity-80">
-            “Limpieza profesional que transforma tu hogar en salud, bienestar y
-            cuidado real.”
+            “Limpieza profesional que transforma tu hogar en salud, bienestar y cuidado real.”
           </p>
           <a href="#" className="inline-block mt-4 underline">Ver CV (pronto)</a>
         </div>
       </section>
 
       {/* CONTACTO */}
-      <section className="mx-auto max-w-6xl px-6 py-16">
+      <section className="mx-auto w-full max-w-[1200px] px-4 md:px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Contacto</h2>
         <p className="mt-2">
           Tampa Bay, FL — Tel:{" "}
