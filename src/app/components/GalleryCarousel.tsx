@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
 
-// ✅ Si ya tienes src/lib/supabaseClient.ts, importa eso y borra estas 3 líneas
+// Si ya tienes src/lib/supabaseClient.ts, importa eso y elimina este createClient
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -20,64 +20,59 @@ type GalleryItem = {
 export default function GalleryCarousel() {
   const [items, setItems] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState<string | null>(null);
 
   useEffect(() => {
     async function load() {
-      // 📁 Bucket: bymariana  Carpeta: gallery/
+      // Lista archivos en el bucket `bymariana`, carpeta `gallery`
       const { data, error } = await supabase.storage
         .from("bymariana")
         .list("gallery", { sortBy: { column: "name", order: "asc" } });
 
       if (error) {
-        console.error("Error listando imagenes:", error.message);
+        console.error("Error listando imágenes:", error);
+        setErr(error.message);
         setLoading(false);
         return;
       }
 
       const files = data ?? [];
-      const mapped = files
-        .filter((f) => f.name.match(/\.(png|jpg|jpeg|webp|gif|svg)$/i))
+      const mapped: GalleryItem[] = files
+        .filter((f) => /\.(png|jpe?g|webp|gif|svg)$/i.test(f.name))
         .map((f) => {
-          const { data: pub } = supabase
+          // AQUÍ estaba el bug: hay que usar storage.from(...).getPublicUrl(...)
+          const { data: pub } = supabase.storage
             .from("bymariana")
             .getPublicUrl(`gallery/${f.name}`);
 
-          // etiqueta "ANTES" o "DESPUÉS" si el nombre lo sugiere
           const n = f.name.toLowerCase();
-          const label: "ANTES" | "DESPUÉS" | undefined =
+          const label =
             n.includes("before") || n.includes("antes")
               ? "ANTES"
               : n.includes("after") || n.includes("despues")
               ? "DESPUÉS"
               : undefined;
 
-          return {
-            name: f.name,
-            url: pub.publicUrl,
-            label,
-          } as GalleryItem;
+          return { name: f.name, url: pub.publicUrl, label };
         });
 
       setItems(mapped);
       setLoading(false);
     }
+
     load();
   }, []);
 
-  if (loading) {
-    return <p className="mt-6 text-gray-500">Cargando galería…</p>;
-  }
-
-  if (!items.length) {
+  if (loading) return <p className="mt-6 text-gray-500">Cargando galería…</p>;
+  if (err) return <p className="mt-6 text-red-600">Error: {err}</p>;
+  if (!items.length)
     return (
       <p className="mt-6 text-gray-500">
         No hay imágenes en <code>bymariana/gallery</code>.
       </p>
     );
-  }
 
-  // 🎯 Grid simple (suficiente y muy estable). Si prefieres un carrusel, te dejo
-  // un ejemplo con Swiper más abajo.
+  // Grid simple y estable
   return (
     <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
       {items.map((it) => (
@@ -85,18 +80,19 @@ export default function GalleryCarousel() {
           key={it.url}
           className="relative rounded-xl overflow-hidden shadow bg-white"
         >
-          {/* unoptimized para evitar restricciones de Next Image con dominios */}
           <Image
             src={it.url}
             alt={it.name}
             width={600}
             height={450}
             className="w-full h-full object-cover"
-            unoptimized
+            unoptimized // para no exigir dominio en next.config
           />
           {it.label && (
-            <figcaption className="absolute top-2 left-2 rounded-full px-3 py-1 text-xs font-semibold"
-              style={{ background: "#F6E6DA", color: "#2B2B2B" }}>
+            <figcaption
+              className="absolute top-2 left-2 rounded-full px-3 py-1 text-xs font-semibold"
+              style={{ background: "#F6E6DA", color: "#2B2B2B" }}
+            >
               {it.label}
             </figcaption>
           )}
