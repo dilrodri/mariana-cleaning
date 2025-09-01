@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Calendar, Phone, Play, Star, FileText } from "lucide-react";
 import Calendly from "./components/Calendly";
 import Image from "next/image";
+import GalleryCarousel from "./components/GalleryCarousel";
 
 export default function Home() {
   const palette = {
@@ -147,15 +148,11 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Antes y Después</h2>
         <p className="mt-2 opacity-80">
-          Aquí mostraremos fotos reales de clientes y del equipo. (Pronto:
-          subida con aprobación).
+          Fotos reales de limpieza. Sube imágenes a <code>bymariana/gallery/</code> en Supabase.
+          Si el archivo contiene “antes” o “despues” en el nombre, se mostrará la etiqueta.
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-          <div className="aspect-[4/3] rounded-xl bg-[var(--rose)]/30" />
-          <div className="aspect-[4/3] rounded-xl bg-[var(--rose)]/30" />
-          <div className="aspect-[4/3] rounded-xl bg-[var(--rose)]/30" />
-          <div className="aspect-[4/3] rounded-xl bg-[var(--rose)]/30" />
-        </div>
+      
+        <GalleryCarousel />
       </section>
 
       {/* TESTIMONIOS */}
