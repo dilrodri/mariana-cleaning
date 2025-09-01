@@ -4,6 +4,7 @@
 import { motion } from "framer-motion";
 import { Calendar, Phone, Play, Star, FileText } from "lucide-react";
 import Calendly from "./components/Calendly";
+import Image from "next/image";
 
 export default function Home() {
   const palette = {
@@ -65,11 +66,10 @@ export default function Home() {
               <a
                 href="#videos"
                 className="rounded-2xl px-5 py-3 border-2"
-                style={{
-                  borderColor: palette.charcoal,
-                  color: palette.charcoal,
-                }}
+                style={{ borderColor: palette.charcoal, color: palette.charcoal }}
               >
+                <Play className="inline mr-2 h-5 w-5" /> Ver videos
+              </a>
                 <Play className="inline mr-2 h-5 w-5" /> Ver videos
               </a>
             </div>
@@ -91,11 +91,16 @@ export default function Home() {
 
           {/* FOTO HERO */}
           <div className="relative">
-            <div className="aspect-[4/5] w-full rounded-3xl shadow-xl overflow-hidden">
-              <img
-                src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/hero/mariana.png"
+            <div className="aspect-[4/5] w-full rounded-3xl shadow-xl overflow-hidden"
+              style={{ background: "var(--cream)" }}
+            >
+              <Image
+                src="/hero/mariana.png"
                 alt="Mariana Aular - Cleaning Services"
-                className="w-full h-full object-cover"
+                width={600}
+                height={750}
+                className="w-full h-full object-cover rounded-3xl shadow-xl"
+                priority   // carga primero porque está en el hero
               />
             </div>
           </div>
@@ -163,10 +168,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* VIDEOS */}
+     {/* VIDEOS */}
       <section id="videos" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Videos</h2>
-        <p className="mt-2 opacity-80">Aquí insertaremos los reels y videos de limpieza.</p>
+        <p className="mt-2 opacity-80">
+          Aquí insertaremos los reels y videos de limpieza.
+        </p>
+      
+        {/* Video incrustado */}
+        <div className="mt-6 rounded-2xl overflow-hidden shadow-lg">
+          <video
+            className="w-full h-auto"
+            controls
+            poster="/placeholder.jpg"  // opcional: imagen previa
+          >
+            <source src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/videos/bymariana.mp4" />
+            Tu navegador no soporta el tag de video.
+          </video>
+        </div>
       </section>
 
       {/* SOBRE MARIANA + CV */}
