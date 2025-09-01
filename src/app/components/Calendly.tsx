@@ -2,10 +2,10 @@
 import Script from "next/script";
 
 type CalendlyProps = {
-  height?: number;
-  bg?: string;      
-  text?: string;    
-  primary?: string; 
+  height?: number;        // alto del iframe
+  bg?: string;            // SIN el #   (ej: "FFFFFF")
+  text?: string;          // SIN el #   (ej: "2B2B2B")
+  primary?: string;       // SIN el #   (ej: "D4AF37")
 };
 
 export default function Calendly({
@@ -18,16 +18,15 @@ export default function Calendly({
 
   return (
     <>
-      <div
-        className="rounded-2xl overflow-hidden shadow"
-        style={{ background: `#${bg}` }}  // para que no se vea “franja” distinta al cargar
-      >
+      {/* El wrapper también blanco para que no haya “franja” distinta */}
+      <div className="rounded-none overflow-hidden" style={{ background: "#FFFFFF" }}>
         <div
-          className="calendly-inline-widget w-full h-[1250px] sm:h-[1200px] md:h-[1100px] lg:h-[1050px]"
+          className="calendly-inline-widget w-full"
+          style={{ minWidth: 320, height }}
           data-url={url}
-          style={{ minWidth: 320 }}
         />
       </div>
+
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
         strategy="lazyOnload"
