@@ -103,7 +103,7 @@ export default function Home() {
               />
               {/* Si usas una URL pública de Supabase, añade unoptimized:
               <Image
-                src="https://...supabase.co/storage/v1/object/public/bymariana/hero/mariana-1.jpg"
+                src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/hero/mariana.png"
                 alt="Mariana Aular - Cleaning Services"
                 width={600}
                 height={750}
@@ -188,7 +188,7 @@ export default function Home() {
             // poster="/placeholder.jpg" // opcional: imagen previa
           >
             <source
-              src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/videos/video%20despues.mp4"
+              src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/videos/bymariana1-2.mp4"
               type="video/mp4"
             />
             Tu navegador no soporta el tag de video.
