@@ -96,7 +96,7 @@ export default function Home() {
               style={{ background: "var(--cream)" }}
             >
               <Image
-                src="/hero/mariana.png"
+                src="/hero/mariana-1.png"
                 alt="Mariana Aular - Cleaning Services"
                 width={600}
                 height={750}
