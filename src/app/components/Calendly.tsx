@@ -1,41 +1,38 @@
+// src/app/components/Calendly.tsx
 "use client";
-import { useEffect, useState } from "react";
 import Script from "next/script";
+import { useMemo } from "react";
 
-type CalendlyProps = {
-  bg?: string;
-  text?: string;
-  primary?: string;
+type Props = {
+  bg?: string;       // hex SIN #
+  text?: string;     // hex SIN #
+  primary?: string;  // hex SIN #
 };
 
 export default function Calendly({
   bg = "FFFFFF",
   text = "2B2B2B",
   primary = "D4AF37",
-}: CalendlyProps) {
-  const [height, setHeight] = useState(800); // altura inicial
-
-  useEffect(() => {
-    const handler = (e: MessageEvent) => {
-      if (e.data?.event === "calendly.event_sizing" && e.data?.payload?.height) {
-        setHeight(e.data.payload.height);
-      }
-    };
-    window.addEventListener("message", handler);
-    return () => window.removeEventListener("message", handler);
-  }, []);
-
-  const url = `https://calendly.com/bymarianaclean?background_color=${bg}&text_color=${text}&primary_color=${primary}`;
+}: Props) {
+  const url = useMemo(
+    () =>
+      `https://calendly.com/bymarianaclean?background_color=${bg}&text_color=${text}&primary_color=${primary}`,
+    [bg, text, primary]
+  );
 
   return (
     <>
-      <div className="w-full">
-        <iframe
-          src={url}
-          className="w-full"
-          style={{ minWidth: 320, height }}
-          frameBorder="0"
-          title="Calendly"
+      {/* Contenedor sin fondo ni sombra; centra el iframe */}
+      <div className="w-full grid place-items-center">
+        <div
+          className="
+            calendly-inline-widget
+            w-full
+            max-w-[780px]
+            h-[740px] sm:h-[780px] lg:h-[720px]
+          "
+          data-url={url}
+          style={{ minWidth: 320 }}
         />
       </div>
 
