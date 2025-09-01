@@ -3,8 +3,8 @@
 
 import { motion } from "framer-motion";
 import { Calendar, Phone, Play, Star, FileText } from "lucide-react";
-import Calendly from "./components/Calendly";
 import Image from "next/image";
+import Calendly from "./components/Calendly";
 import GalleryCarousel from "./components/GalleryCarousel";
 
 export default function Home() {
@@ -18,17 +18,10 @@ export default function Home() {
   return (
     <main className="w-full">
       {/* HERO */}
-      <section className="relative overflow-hidden" style={{ background: "var(--rose)" }}>
+      <section style={{ background: "var(--rose)" }}>
         <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6 py-14 md:py-16 grid md:grid-cols-2 gap-10 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div
-              className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm"
-              style={{ background: "var(--cream)" }}
-            >
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm" style={{ background: "var(--cream)" }}>
               <span>Free Estimates</span>
             </div>
 
@@ -37,32 +30,17 @@ export default function Home() {
             </h1>
 
             <p className="mt-4 text-lg md:text-xl">
-              Limpieza profesional de hogares, Airbnb y post-construcción.
-              Agenda tu visita para presupuesto y deja tu lugar brillante ✨
+              Limpieza profesional de hogares, Airbnb y post-construcción. Agenda tu visita para presupuesto y deja tu lugar brillante ✨
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href="#booking"
-                className="rounded-2xl px-5 py-3 text-white shadow"
-                style={{ background: palette.charcoal }}
-              >
+              <a href="#booking" className="rounded-2xl px-5 py-3 text-white shadow" style={{ background: palette.charcoal }}>
                 <Calendar className="inline mr-2 h-5 w-5" /> Reservar visita
               </a>
-
-              <a
-                href="tel:+18138179146"
-                className="rounded-2xl px-5 py-3 border-2"
-                style={{ borderColor: palette.charcoal, color: palette.charcoal }}
-              >
+              <a href="tel:+18138179146" className="rounded-2xl px-5 py-3 border-2" style={{ borderColor: palette.charcoal, color: palette.charcoal }}>
                 <Phone className="inline mr-2 h-5 w-5" /> Llamar 813 8179146
               </a>
-
-              <a
-                href="#videos"
-                className="rounded-2xl px-5 py-3 border-2"
-                style={{ borderColor: palette.charcoal, color: palette.charcoal }}
-              >
+              <a href="#videos" className="rounded-2xl px-5 py-3 border-2" style={{ borderColor: palette.charcoal, color: palette.charcoal }}>
                 <Play className="inline mr-2 h-5 w-5" /> Ver videos
               </a>
             </div>
@@ -80,10 +58,7 @@ export default function Home() {
 
           {/* FOTO HERO */}
           <div className="relative">
-            <div
-              className="aspect-[4/5] w-full rounded-3xl shadow-xl overflow-hidden"
-              style={{ background: "var(--cream)" }}
-            >
+            <div className="aspect-[4/5] w-full rounded-3xl shadow-xl overflow-hidden" style={{ background: "var(--cream)" }}>
               <Image
                 src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/hero/mariana.png"
                 alt="Mariana Aular - Cleaning Services"
@@ -119,9 +94,7 @@ export default function Home() {
       <section className="py-14" style={{ background: "var(--cream)" }}>
         <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Antes y Después</h2>
-          <p className="mt-2 opacity-80">
-            Fotos reales de limpieza. (Sube imágenes a <code>bymariana/gallery/</code> en Supabase).
-          </p>
+          <p className="mt-2 opacity-80">Fotos reales de limpieza (carpeta <code>bymariana/gallery/</code> en Supabase).</p>
           <div className="mt-6">
             <GalleryCarousel
               bucket="bymariana"
@@ -132,14 +105,8 @@ export default function Home() {
               className="h-[380px] md:h-[520px] w-full"
             />
           </div>
-
-          {/* CTA cerca del bloque visual */}
           <div className="mt-6">
-            <a
-              href="#booking"
-              className="inline-block rounded-2xl px-5 py-3 text-white shadow"
-              style={{ background: "#2B2B2B" }}
-            >
+            <a href="#booking" className="inline-block rounded-2xl px-5 py-3 text-white shadow" style={{ background: "#2B2B2B" }}>
               Reservar visita de presupuesto
             </a>
           </div>
@@ -150,11 +117,7 @@ export default function Home() {
       <section id="booking" className="py-16">
         <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
-          <p className="mt-2 opacity-80">
-            Selecciona un día disponible para una visita de presupuesto en tu hogar.
-          </p>
-
-          {/* Tarjeta blanca centrada */}
+          <p className="mt-2 opacity-80">Selecciona un día disponible para una visita de presupuesto en tu hogar.</p>
           <div className="mt-6 mx-auto max-w-[840px] rounded-2xl overflow-hidden shadow bg-white">
             <Calendly bg="FFFFFF" text="2B2B2B" primary="D4AF37" />
           </div>
@@ -173,19 +136,9 @@ export default function Home() {
       <section id="videos" className="mx-auto w-full max-w-[1200px] px-4 md:px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Videos</h2>
         <p className="mt-2 opacity-80">Aquí insertaremos los reels y videos de limpieza.</p>
-
         <div className="mt-6 rounded-2xl overflow-hidden shadow-lg">
-          <video
-            className="w-full h-auto"
-            controls
-            playsInline
-            preload="metadata"
-            // poster="/placeholder.jpg"
-          >
-            <source
-              src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/videos/bymariana1-2.mp4"
-              type="video/mp4"
-            />
+          <video className="w-full h-auto" controls playsInline preload="metadata">
+            <source src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/videos/bymariana1-2.mp4" type="video/mp4" />
             Tu navegador no soporta el tag de video.
           </video>
         </div>
@@ -195,9 +148,7 @@ export default function Home() {
       <section id="cv" className="py-16" style={{ background: "var(--cream)" }}>
         <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Sobre Mariana</h2>
-          <p className="mt-2 opacity-80">
-            “Limpieza profesional que transforma tu hogar en salud, bienestar y cuidado real.”
-          </p>
+          <p className="mt-2 opacity-80">“Limpieza profesional que transforma tu hogar en salud, bienestar y cuidado real.”</p>
           <a href="#" className="inline-block mt-4 underline">Ver CV (pronto)</a>
         </div>
       </section>
@@ -206,24 +157,11 @@ export default function Home() {
       <section className="mx-auto w-full max-w-[1200px] px-4 md:px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Contacto</h2>
         <p className="mt-2">
-          Tampa Bay, FL — Tel:{" "}
-          <a className="underline" href="tel:+18138179146">813 8179146</a>
+          Tampa Bay, FL — Tel: <a className="underline" href="tel:+18138179146">813 8179146</a>
         </p>
         <div className="mt-4 flex gap-3">
-          <a
-            href="https://wa.me/18138179146"
-            className="rounded-full px-4 py-2 text-white"
-            style={{ background: "#25D366" }}
-          >
-            WhatsApp
-          </a>
-          <a
-            href="tel:+18138179146"
-            className="rounded-full px-4 py-2 text-white"
-            style={{ background: "var(--charcoal)" }}
-          >
-            Llamar
-          </a>
+          <a href="https://wa.me/18138179146" className="rounded-full px-4 py-2 text-white" style={{ background: "#25D366" }}>WhatsApp</a>
+          <a href="tel:+18138179146" className="rounded-full px-4 py-2 text-white" style={{ background: "var(--charcoal)" }}>Llamar</a>
         </div>
       </section>
     </main>
