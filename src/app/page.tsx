@@ -4,6 +4,7 @@
 import { motion } from "framer-motion";
 import { Calendar, Phone, Play, Star, FileText } from "lucide-react";
 import Calendly from "./components/Calendly";
+
 export default function Home() {
   const palette = {
     rose: "var(--rose)",
@@ -15,9 +16,16 @@ export default function Home() {
   return (
     <main>
       {/* HERO */}
-      <section className="relative overflow-hidden" style={{ background: "var(--rose)" }}>
+      <section
+        className="relative overflow-hidden"
+        style={{ background: "var(--rose)" }}
+      >
         <div className="mx-auto max-w-6xl px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <div
               className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm"
               style={{ background: "var(--cream)" }}
@@ -30,8 +38,8 @@ export default function Home() {
             </h1>
 
             <p className="mt-4 text-lg md:text-xl">
-              Limpieza profesional de hogares, Airbnb y post-construcción. Agenda tu visita para presupuesto y deja tu
-              lugar brillante ✨
+              Limpieza profesional de hogares, Airbnb y post-construcción. Agenda
+              tu visita para presupuesto y deja tu lugar brillante ✨
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -46,7 +54,10 @@ export default function Home() {
               <a
                 href="tel:+18138179146"
                 className="rounded-2xl px-5 py-3 border-2"
-                style={{ borderColor: palette.charcoal, color: palette.charcoal }}
+                style={{
+                  borderColor: palette.charcoal,
+                  color: palette.charcoal,
+                }}
               >
                 <Phone className="inline mr-2 h-5 w-5" /> Llamar 813 8179146
               </a>
@@ -54,7 +65,10 @@ export default function Home() {
               <a
                 href="#videos"
                 className="rounded-2xl px-5 py-3 border-2"
-                style={{ borderColor: palette.charcoal, color: palette.charcoal }}
+                style={{
+                  borderColor: palette.charcoal,
+                  color: palette.charcoal,
+                }}
               >
                 <Play className="inline mr-2 h-5 w-5" /> Ver videos
               </a>
@@ -65,7 +79,11 @@ export default function Home() {
             </div>
 
             <div className="mt-6">
-              <a href="#cv" className="underline" style={{ color: palette.charcoal }}>
+              <a
+                href="#cv"
+                className="underline"
+                style={{ color: palette.charcoal }}
+              >
                 <FileText className="inline h-4 w-4 mr-1" /> Ver CV de Mariana
               </a>
             </div>
@@ -78,7 +96,8 @@ export default function Home() {
               style={{ background: "var(--cream)" }}
             >
               <span className="px-5 text-center">
-                Aquí irá la foto de Mariana (hero/). Reemplazaremos este contenedor con la imagen pública del bucket.
+                Aquí irá la foto de Mariana (hero/). Reemplazaremos este
+                contenedor con la imagen pública del bucket.
               </span>
             </div>
           </div>
@@ -95,7 +114,11 @@ export default function Home() {
             ["Post-Construcción", "Retiro de polvo fino y acabados."],
             ["Move-In / Move-Out", "Listo para entrar o entregar."],
           ].map(([t, d]) => (
-            <li key={t} className="rounded-2xl p-5 shadow-sm" style={{ background: "var(--cream)" }}>
+            <li
+              key={t}
+              className="rounded-2xl p-5 shadow-sm"
+              style={{ background: "var(--cream)" }}
+            >
               <div className="font-semibold">{t}</div>
               <p className="mt-1 text-sm opacity-80">{d}</p>
             </li>
@@ -104,30 +127,38 @@ export default function Home() {
       </section>
 
       {/* CALENDARIO */}
-      <section id="booking" className="py-16" style={{ background: "var(--cream)" }}>
+      <section
+        id="booking"
+        className="py-16"
+        style={{ background: "var(--cream)" }}
+      >
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold">
+            Agenda disponibilidad
+          </h2>
           <p className="mt-2 opacity-80">
-            Selecciona un día disponible para una visita de presupuesto en tu hogar.
+            Selecciona un día disponible para una visita de presupuesto en tu
+            hogar.
           </p>
-      
-          {/* Aquí el widget en blanco, dentro del fondo crema */}
-          <div className="mt-6 rounded-2xl overflow-hidden shadow bg-white">
+
+          {/* Calendly blanco sin marco extra */}
+          <div className="mt-6">
             <Calendly
               height={1050}
-              bg="FFFFFF"        // Calendly en blanco
-              text="2B2B2B"      // texto oscuro
-              primary="D4AF37"   // dorado
+              bg="FFFFFF"
+              text="2B2B2B"
+              primary="D4AF37"
             />
           </div>
         </div>
       </section>
-      
+
       {/* GALERÍA */}
       <section className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Antes y Después</h2>
         <p className="mt-2 opacity-80">
-          Aquí mostraremos fotos reales de clientes y del equipo. (Pronto: subida con aprobación).
+          Aquí mostraremos fotos reales de clientes y del equipo. (Pronto:
+          subida con aprobación).
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
           <div className="aspect-[4/3] rounded-xl bg-[var(--rose)]/30" />
@@ -141,14 +172,18 @@ export default function Home() {
       <section className="py-16" style={{ background: "var(--cream)" }}>
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Testimonios</h2>
-          <p className="mt-2 opacity-80">Los clientes pueden dejar reseñas y dar “like”.</p>
+          <p className="mt-2 opacity-80">
+            Los clientes pueden dejar reseñas y dar “like”.
+          </p>
         </div>
       </section>
 
       {/* VIDEOS */}
       <section id="videos" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Videos</h2>
-        <p className="mt-2 opacity-80">Aquí insertaremos los reels y videos de limpieza.</p>
+        <p className="mt-2 opacity-80">
+          Aquí insertaremos los reels y videos de limpieza.
+        </p>
       </section>
 
       {/* SOBRE MARIANA + CV */}
@@ -156,7 +191,8 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Sobre Mariana</h2>
           <p className="mt-2 opacity-80">
-            “Limpieza profesional que transforma tu hogar en salud, bienestar y cuidado real.”
+            “Limpieza profesional que transforma tu hogar en salud, bienestar y
+            cuidado real.”
           </p>
           <a href="#" className="inline-block mt-4 underline">
             Ver CV (pronto)
