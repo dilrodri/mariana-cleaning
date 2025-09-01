@@ -3,9 +3,9 @@ import Script from "next/script";
 
 type CalendlyProps = {
   height?: number;
-  bg?: string;      // hex sin #
-  text?: string;    // hex sin #
-  primary?: string; // hex sin #
+  bg?: string;      
+  text?: string;    
+  primary?: string; 
 };
 
 export default function Calendly({
