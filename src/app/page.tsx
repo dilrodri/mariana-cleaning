@@ -104,7 +104,6 @@ export default function Home() {
       </section>
 
       {/* CALENDARIO */}
-       // ...dentro del return, en la sección #booking:
       <section id="booking" className="py-16" style={{ background: "var(--cream)" }}>
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
