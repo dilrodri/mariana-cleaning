@@ -127,21 +127,13 @@ export default function Home() {
       </section>
 
       {/* CALENDARIO */}
-      <section
-        id="booking"
-        className="py-16"
-        style={{ background: "var(--cream)" }}
-      >
+      <section id="booking" className="py-16" style={{ background: "var(--cream)" }}>
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold">
-            Agenda disponibilidad
-          </h2>
+          <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
           <p className="mt-2 opacity-80">
-            Selecciona un día disponible para una visita de presupuesto en tu
-            hogar.
+            Selecciona un día disponible para una visita de presupuesto en tu hogar.
           </p>
-
-          {/* Calendly blanco sin marco extra y con auto-resize */}
+      
           <div className="mt-6">
             <Calendly bg="FFFFFF" text="2B2B2B" primary="D4AF37" />
           </div>
