@@ -3,8 +3,7 @@
 
 import { motion } from "framer-motion";
 import { Calendar, Phone, Play, Star, FileText } from "lucide-react";
-import Calendly from "./components/Calendly";
-
+import CalendlyWidget from "./components/Calendly";
 export default function Home() {
   const palette = {
     rose: "var(--rose)",
@@ -106,17 +105,20 @@ export default function Home() {
 
       {/* CALENDARIO */}
        // ...dentro del return, en la sección #booking:
-       <section id="booking" className="py-16" style={{ background: "var(--cream)" }}>
-         <div className="mx-auto max-w-5xl px-6">
-           <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
-           <p className="mt-2 opacity-80">
-             Selecciona un día disponible para una visita de presupuesto en tu hogar.
-           </p>
-           <div className="mt-6">
-             <Calendly />
-           </div>
-         </div>
-       </section>
+      <section id="booking" className="py-16" style={{ background: "var(--cream)" }}>
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
+          <p className="mt-2 opacity-80">
+            Selecciona un día disponible para una visita de presupuesto en tu hogar.
+          </p>
+          <div className="mt-6 rounded-2xl overflow-hidden shadow bg-white">
+            <CalendlyWidget
+              url="https://calendly.com/bymarianaclean?background_color=f7c7d7&text_color=f175d5&primary_color=ff00a8"
+              height={700}
+            />
+          </div>
+        </div>
+      </section>
 
       {/* GALERÍA */}
       <section className="mx-auto max-w-6xl px-6 py-16">
