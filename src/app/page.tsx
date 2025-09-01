@@ -141,14 +141,9 @@ export default function Home() {
             hogar.
           </p>
 
-          {/* Calendly blanco sin marco extra */}
+          {/* Calendly blanco sin marco extra y con auto-resize */}
           <div className="mt-6">
-            <Calendly
-              height={1050}
-              bg="FFFFFF"
-              text="2B2B2B"
-              primary="D4AF37"
-            />
+            <Calendly bg="FFFFFF" text="2B2B2B" primary="D4AF37" />
           </div>
         </div>
       </section>
@@ -181,9 +176,7 @@ export default function Home() {
       {/* VIDEOS */}
       <section id="videos" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Videos</h2>
-        <p className="mt-2 opacity-80">
-          Aquí insertaremos los reels y videos de limpieza.
-        </p>
+        <p className="mt-2 opacity-80">Aquí insertaremos los reels y videos de limpieza.</p>
       </section>
 
       {/* SOBRE MARIANA + CV */}
