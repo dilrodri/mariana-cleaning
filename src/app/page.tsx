@@ -94,7 +94,7 @@ export default function Home() {
             >
               {/* Usa un JPG sin “cuadriculado”, o pon tu URL de Supabase */}
               <Image
-                src="/hero/mariana-1.jpg"   // <-- asegúrate que exista en /public/hero
+                src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/hero/mariana.png"   // <-- asegúrate que exista en /public/hero
                 alt="Mariana Aular - Cleaning Services"
                 width={600}
                 height={750}
