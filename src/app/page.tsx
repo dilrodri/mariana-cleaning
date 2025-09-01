@@ -1,4 +1,3 @@
-// src/app/page.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -90,7 +89,7 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* GALERÍA (Antes/Después) */}
+      {/* GALERÍA */}
       <section className="py-14" style={{ background: "var(--cream)" }}>
         <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Antes y Después</h2>
@@ -105,11 +104,6 @@ export default function Home() {
               className="h-[380px] md:h-[520px] w-full"
             />
           </div>
-          <div className="mt-6">
-            <a href="#booking" className="inline-block rounded-2xl px-5 py-3 text-white shadow" style={{ background: "#2B2B2B" }}>
-              Reservar visita de presupuesto
-            </a>
-          </div>
         </div>
       </section>
 
@@ -119,7 +113,7 @@ export default function Home() {
           <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
           <p className="mt-2 opacity-80">Selecciona un día disponible para una visita de presupuesto en tu hogar.</p>
           <div className="mt-6 mx-auto max-w-[840px] rounded-2xl overflow-hidden shadow bg-white">
-            <Calendly bg="FFFFFF" text="2B2B2B" primary="D4AF37" />
+            <Calendly />
           </div>
         </div>
       </section>
@@ -144,7 +138,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SOBRE MARIANA + CV */}
+      {/* SOBRE MARIANA */}
       <section id="cv" className="py-16" style={{ background: "var(--cream)" }}>
         <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Sobre Mariana</h2>
