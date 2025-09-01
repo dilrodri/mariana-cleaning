@@ -91,14 +91,12 @@ export default function Home() {
 
           {/* FOTO HERO */}
           <div className="relative">
-            <div
-              className="aspect-[4/5] w-full rounded-3xl shadow-xl grid place-items-center"
-              style={{ background: "var(--cream)" }}
-            >
-              <span className="px-5 text-center">
-                Aquí irá la foto de Mariana (hero/). Reemplazaremos este
-                contenedor con la imagen pública del bucket.
-              </span>
+            <div className="aspect-[4/5] w-full rounded-3xl shadow-xl overflow-hidden">
+              <img
+                src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/hero/mariana.png"
+                alt="Mariana Aular - Cleaning Services"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
