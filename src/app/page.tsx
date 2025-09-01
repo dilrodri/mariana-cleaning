@@ -90,17 +90,18 @@ export default function Home() {
           <div className="relative">
             <div
               className="aspect-[4/5] w-full rounded-3xl shadow-xl overflow-hidden"
-              style={{ background: "var(--cream)" }}
+              style={{ background: "transparent" }}   // ← antes: var(--cream)
             >
-              {/* Usa un JPG sin “cuadriculado”, o pon tu URL de Supabase */}
               <Image
-                src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/hero/mariana.png"   // <-- asegúrate que exista en /public/hero
+                </div> src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/hero/mariana.png"   // <-- asegúrate que exista en /public/hero
                 alt="Mariana Aular - Cleaning Services"
                 width={600}
                 height={750}
                 className="w-full h-full object-cover"
                 priority
               />
+            </div>
+
               {/* Si usas una URL pública de Supabase, añade unoptimized:
               <Image
                 src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/hero/mariana.png"
