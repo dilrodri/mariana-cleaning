@@ -1,3 +1,4 @@
+// src/app/page.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -15,12 +16,20 @@ export default function Home() {
   };
 
   return (
-    <main className="w-full">
+    <main className="bg-white">
       {/* HERO */}
-      <section style={{ background: "var(--rose)" }}>
-        <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6 py-14 md:py-16 grid md:grid-cols-2 gap-10 items-center">
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm" style={{ background: "var(--cream)" }}>
+      <section className="relative overflow-hidden" style={{ background: "var(--rose)" }}>
+        <div className="mx-auto max-w-6xl px-6 py-16 grid md:grid-cols-2 gap-10 items-center">
+          {/* Texto */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div
+              className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm"
+              style={{ background: "var(--cream)" }}
+            >
               <span>Free Estimates</span>
             </div>
 
@@ -29,17 +38,32 @@ export default function Home() {
             </h1>
 
             <p className="mt-4 text-lg md:text-xl">
-              Limpieza profesional de hogares, Airbnb y post-construcción. Agenda tu visita para presupuesto y deja tu lugar brillante ✨
+              Limpieza profesional de hogares, Airbnb y post-construcción. Agenda tu visita
+              para presupuesto y deja tu lugar brillante ✨
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#booking" className="rounded-2xl px-5 py-3 text-white shadow" style={{ background: palette.charcoal }}>
+              <a
+                href="#booking"
+                className="rounded-2xl px-5 py-3 text-white shadow"
+                style={{ background: palette.charcoal }}
+              >
                 <Calendar className="inline mr-2 h-5 w-5" /> Reservar visita
               </a>
-              <a href="tel:+18138179146" className="rounded-2xl px-5 py-3 border-2" style={{ borderColor: palette.charcoal, color: palette.charcoal }}>
+
+              <a
+                href="tel:+18138179146"
+                className="rounded-2xl px-5 py-3 border-2"
+                style={{ borderColor: palette.charcoal, color: palette.charcoal }}
+              >
                 <Phone className="inline mr-2 h-5 w-5" /> Llamar 813 8179146
               </a>
-              <a href="#videos" className="rounded-2xl px-5 py-3 border-2" style={{ borderColor: palette.charcoal, color: palette.charcoal }}>
+
+              <a
+                href="#videos"
+                className="rounded-2xl px-5 py-3 border-2"
+                style={{ borderColor: palette.charcoal, color: palette.charcoal }}
+              >
                 <Play className="inline mr-2 h-5 w-5" /> Ver videos
               </a>
             </div>
@@ -55,14 +79,15 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* FOTO HERO */}
+          {/* Foto Hero */}
           <div className="relative">
-            <div className="aspect-[4/5] w-full rounded-3xl shadow-xl overflow-hidden" style={{ background: "var(--cream)" }}>
+            <div className="aspect-[4/5] w-full rounded-3xl shadow-xl overflow-hidden" style={{ background: "transparent" }}>
               <Image
                 src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/hero/mariana.png"
                 alt="Mariana Aular - Cleaning Services"
-                fill
-                className="object-cover"
+                width={600}
+                height={750}
+                className="w-full h-full object-cover"
                 priority
                 unoptimized
               />
@@ -72,7 +97,7 @@ export default function Home() {
       </section>
 
       {/* SERVICIOS */}
-      <section className="mx-auto w-full max-w-[1200px] px-4 md:px-6 py-12 md:py-14">
+      <section className="mx-auto max-w-6xl px-6 py-14">
         <h2 className="text-2xl md:text-3xl font-semibold mb-6">Servicios</h2>
         <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
@@ -89,69 +114,72 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* GALERÍA */}
-      <section className="py-14" style={{ background: "var(--cream)" }}>
-        <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold">Antes y Después</h2>
-          <p className="mt-2 opacity-80">Fotos reales de limpieza (carpeta <code>bymariana/gallery/</code> en Supabase).</p>
+      {/* CALENDARIO */}
+      <section id="booking" className="py-16" style={{ background: "var(--cream)" }}>
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
+          <p className="mt-2 opacity-80">
+            Selecciona un día disponible para una visita de presupuesto en tu hogar.
+          </p>
           <div className="mt-6">
-            <GalleryCarousel
-              bucket="bymariana"
-              prefix="gallery"
-              limit={30}
-              intervalMs={4500}
-              alt="Antes y después - Mariana"
-              className="h-[380px] md:h-[520px] w-full"
-            />
+            <Calendly bg="FFFFFF" text="2B2B2B" primary="D4AF37" />
           </div>
         </div>
       </section>
 
-      {/* CALENDARIO */}
-      <section id="booking" className="py-16">
-        <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold">Agenda disponibilidad</h2>
-          <p className="mt-2 opacity-80">Selecciona un día disponible para una visita de presupuesto en tu hogar.</p>
-          <div className="mt-6 mx-auto max-w-[840px] rounded-2xl overflow-hidden shadow bg-white">
-            <Calendly />
-          </div>
-        </div>
+      {/* GALERÍA */}
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <h2 className="text-2xl md:text-3xl font-semibold">Antes y Después</h2>
+        <p className="mt-2 opacity-80">
+          Fotos reales de limpieza. Sube imágenes a <code>bymariana/gallery/</code> en Supabase.
+        </p>
+        <GalleryCarousel
+          bucket="bymariana"
+          prefix="gallery"
+          limit={30}
+          intervalMs={4500}
+          alt="Antes y después - Mariana"
+          className="h-[380px] md:h-[520px] w-full"
+        />
       </section>
 
       {/* TESTIMONIOS */}
       <section className="py-16" style={{ background: "var(--cream)" }}>
-        <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
+        <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Testimonios</h2>
           <p className="mt-2 opacity-80">Los clientes pueden dejar reseñas y dar “like”.</p>
         </div>
       </section>
 
       {/* VIDEOS */}
-      <section id="videos" className="mx-auto w-full max-w-[1200px] px-4 md:px-6 py-16">
+      <section id="videos" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Videos</h2>
         <p className="mt-2 opacity-80">Aquí insertaremos los reels y videos de limpieza.</p>
         <div className="mt-6 rounded-2xl overflow-hidden shadow-lg">
           <video className="w-full h-auto" controls playsInline preload="metadata">
             <source src="https://gfddvghfqgaijwdtjgsa.supabase.co/storage/v1/object/public/bymariana/videos/bymariana1-2.mp4" type="video/mp4" />
-            Tu navegador no soporta el tag de video.
+            Tu navegador no soporta el video.
           </video>
         </div>
       </section>
 
-      {/* SOBRE MARIANA */}
+      {/* SOBRE MARIANA + CV */}
       <section id="cv" className="py-16" style={{ background: "var(--cream)" }}>
-        <div className="mx-auto w-full max-w-[1200px] px-4 md:px-6">
+        <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold">Sobre Mariana</h2>
-          <p className="mt-2 opacity-80">“Limpieza profesional que transforma tu hogar en salud, bienestar y cuidado real.”</p>
+          <p className="mt-2 opacity-80">
+            “Limpieza profesional que transforma tu hogar en salud, bienestar y cuidado real.”
+          </p>
           <a href="#" className="inline-block mt-4 underline">Ver CV (pronto)</a>
         </div>
       </section>
 
       {/* CONTACTO */}
-      <section className="mx-auto w-full max-w-[1200px] px-4 md:px-6 py-16">
+      <section className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-2xl md:text-3xl font-semibold">Contacto</h2>
         <p className="mt-2">
-          Tampa Bay, FL — Tel: <a className="underline" href="tel:+18138179146">813 8179146</a>
+          Tampa Bay, FL — Tel:{" "}
+          <a className="underline" href="tel:+18138179146">813 8179146</a>
         </p>
         <div className="mt-4 flex gap-3">
           <a href="https://wa.me/18138179146" className="rounded-full px-4 py-2 text-white" style={{ background: "#25D366" }}>WhatsApp</a>
