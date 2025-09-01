@@ -1,25 +1,33 @@
 "use client";
-
 import Script from "next/script";
-import { useRef } from "react";
 
 type CalendlyProps = {
-  url: string;
   height?: number;
+  bg?: string;      // hex sin #
+  text?: string;    // hex sin #
+  primary?: string; // hex sin #
 };
 
-export default function CalendlyWidget({ url, height = 700 }: CalendlyProps) {
-  const ref = useRef<HTMLDivElement | null>(null);
+export default function Calendly({
+  height = 1100,
+  bg = "F6E6DA",
+  text = "2B2B2B",
+  primary = "D4AF37",
+}: CalendlyProps) {
+  const url = `https://calendly.com/bymarianaclean?background_color=${bg}&text_color=${text}&primary_color=${primary}`;
 
   return (
     <>
       <div
-        className="calendly-inline-widget"
-        data-url={url}
-        style={{ minWidth: 320, height }}
-        ref={ref}
-      />
-      {/* Carga el script de Calendly correctamente en Next */}
+        className="rounded-2xl overflow-hidden shadow"
+        style={{ background: `#${bg}` }}  // para que no se vea “franja” distinta al cargar
+      >
+        <div
+          className="calendly-inline-widget w-full h-[1250px] sm:h-[1200px] md:h-[1100px] lg:h-[1050px]"
+          data-url={url}
+          style={{ minWidth: 320 }}
+        />
+      </div>
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
         strategy="lazyOnload"
