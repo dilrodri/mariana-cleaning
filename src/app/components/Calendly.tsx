@@ -14,7 +14,7 @@ export default function Calendly({
   text = "2B2B2B",
   primary = "D4AF37",
 }: CalendlyProps) {
-  const url = `https://calendly.com/bymarianaclean?background_color=${bg}&text_color=${text}&primary_color=${primary}`;
+  const url = `https://calendly.com/bymarianaclean?background_color=FFFFFF&text_color=2B2B2B&primary_color=D4AF37`;
 
   return (
     <>
