@@ -8,24 +8,24 @@ type Props = {
   title: string;
   children: React.ReactNode;
   defaultOpen?: boolean;
-  className?: string;      // clases para el contenedor interior
+  className?: string;
 };
 
 export default function Collapsible({
   title,
   children,
-  defaultOpen = true,
+  defaultOpen = false,
   className = "",
 }: Props) {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div className="relative my-6">
-      {/* Pestaña */}
+    <div className="relative my-8">
+      {/* Pestaña (alineada al padding común .px-6 del contenedor) */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className={`absolute -top-4 left-6 z-10 inline-flex items-center gap-2 px-4 py-1.5 rounded-t-xl
-                    bg-[var(--rose)] text-white shadow-md hover:opacity-90`}
+        className="absolute -top-4 left-6 z-10 inline-flex items-center gap-2 px-4 py-1.5 rounded-t-xl
+                   bg-[var(--rose)] text-white shadow-md hover:opacity-90"
         aria-expanded={open}
       >
         <span className="text-sm font-semibold">{title}</span>
@@ -35,7 +35,7 @@ export default function Collapsible({
       </button>
 
       {/* Caja */}
-      <div className="rounded-2xl border border-[var(--rose)]/25 bg-white shadow-sm">
+      <div className="rounded-2xl border border-[var(--rose)]/20 bg-white shadow-sm">
         <motion.div
           initial={false}
           animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}

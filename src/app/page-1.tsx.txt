@@ -84,9 +84,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICIOS — pestaña cerrada */}
+      {/* SERVICIOS */}
       <section className="mx-auto max-w-6xl px-6 py-14">
-        <Collapsible title="Servicios" defaultOpen={false}>
+        <Collapsible title="Servicios" defaultOpen>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               ["Casas & Apartamentos", "Limpieza profunda y de mantenimiento."],
@@ -103,10 +103,10 @@ export default function Home() {
         </Collapsible>
       </section>
 
-      {/* CALENDLY — CREMA (a todo lo ancho) — pestaña cerrada */}
-      <section id="booking" style={{ background: "var(--cream)" }}>
-        <div className="mx-auto max-w-6xl px-6 py-12">
-          <Collapsible title="Agenda disponibilidad" defaultOpen={false}>
+      {/* CALENDARIO (espacio reducido) */}
+      <section id="booking" className="pt-10 pb-4" style={{ background: "var(--cream)" }}>
+        <div className="mx-auto max-w-5xl px-6">
+          <Collapsible title="Agenda disponibilidad" defaultOpen>
             <p className="opacity-80 mb-4">
               Selecciona un día disponible para una visita de presupuesto en tu hogar.
             </p>
@@ -115,78 +115,80 @@ export default function Home() {
         </div>
       </section>
 
-{/* GALERÍA — BLANCO */}
-<section className="bg-white">
-  <div className="mx-auto max-w-6xl px-6 py-12">
-    <Collapsible title="Antes y Después (Galería de fotos)" defaultOpen={false}>
-      <p className="mt-1 opacity-80">
-        Fotos reales de limpieza. Sube imágenes a <code>bymariana/gallery/</code> en Supabase.
-      </p>
-      <div className="mt-4">
-        <GalleryCarousel
-          bucket="bymariana"
-          prefix="gallery"
-          limit={40}
-          intervalMs={0}
-          rounded="rounded-2xl"
-          alt="Fotos reales de limpieza"
-          className="w-full h-[340px] md:h-[420px]"
-        />
-      </div>
-    </Collapsible>
-  </div>
-</section>
+      {/* MEDIA: GALERÍA + VIDEOS (lado a lado) */}
+      <section id="videos" className="mx-auto max-w-6xl px-6 py-12">
+        <Collapsible title="Antes y Después & Videos" defaultOpen>
+          <div className="grid gap-8 md:grid-cols-2 items-start">
+            {/* Galería */}
+            <div>
+              <h3 className="text-xl font-semibold">Antes y Después</h3>
+              <p className="mt-1 opacity-80">
+                Fotos reales de limpieza. Sube imágenes a <code>bymariana/gallery/</code> en Supabase.
+              </p>
+              <div className="mt-4">
+                <GalleryCarousel
+                  bucket="bymariana"
+                  prefix="gallery"
+                  limit={40}
+                  intervalMs={0}
+                  rounded="rounded-2xl"
+                  alt="Fotos reales de limpieza"
+                  className="w-full h-[340px] md:h-[420px]"
+                />
+              </div>
+            </div>
 
-{/* VIDEOS — CREMA */}
-<section id="videos" style={{ background: "var(--cream)" }}>
-  <div className="mx-auto max-w-6xl px-6 py-12">
-    <Collapsible title="Videos" defaultOpen={false}>
-      <p className="mt-1 opacity-80">Reels y demostraciones de limpieza.</p>
-      <div className="mt-4">
-        <VideoCarousel
-          bucket="bymariana"
-          prefix="videos"
-          postersPrefix="videos-posters"
-          intervalMs={0}
-          className="w-full h-[340px] md:h-[420px]"
-          rounded="rounded-2xl"
-        />
-      </div>
-    </Collapsible>
-  </div>
-</section>
+            {/* Videos */}
+            <div>
+              <h3 className="text-xl font-semibold">Videos</h3>
+              <p className="mt-1 opacity-80">Reels y demostraciones de limpieza.</p>
+              <div className="mt-4">
+                <VideoCarousel
+                  bucket="bymariana"
+                  prefix="videos"
+                  postersPrefix="videos-posters"
+                  intervalMs={0}
+                  className="w-full h-[340px] md:h-[420px]"
+                  rounded="rounded-2xl"
+                />
+              </div>
+            </div>
+          </div>
+        </Collapsible>
+      </section>
 
-{/* TESTIMONIOS — BLANCO */}
-<section id="testimonios" className="bg-white">
-  <div className="mx-auto max-w-6xl px-6 py-14">
-    <Collapsible title="Testimonios" defaultOpen={false}>
-      <div className="mx-auto max-w-xl">
-        <div className="p-6 rounded-2xl bg-white shadow-md border border-[var(--rose)]">
-          <h3 className="text-lg font-semibold mb-2 text-[var(--charcoal)]">✨ Comparte tu testimonio</h3>
-          <p className="text-sm text-neutral-600 mb-4">
-            Arrastra tu archivo o haz click en el botón. Aceptamos <b>fotos</b> y <b>videos</b>.
-          </p>
+      {/* TESTIMONIOS: franja crema + pestaña */}
+      <section id="testimonios" className="py-14" style={{ background: "var(--cream)" }}>
+        <div className="mx-auto max-w-6xl px-6">
+          <Collapsible title="Testimonios" defaultOpen>
+            <div className="mx-auto max-w-xl">
+              <div className="p-6 rounded-2xl bg-white shadow-md border border-[var(--rose)]">
+                <h3 className="text-lg font-semibold mb-2 text-[var(--charcoal)]">✨ Comparte tu testimonio</h3>
+                <p className="text-sm text-neutral-600 mb-4">
+                  Arrastra tu archivo o haz click en el botón. Aceptamos <b>fotos</b> y <b>videos</b>.
+                </p>
 
-          <TestimonialsUploader />
+                <TestimonialsUploader />
 
-          <p className="text-xs mt-3 text-neutral-500">
-            Publicaciones con ofensas se rechazan automáticamente.
-          </p>
+                <p className="text-xs mt-3 text-neutral-500">
+                  Publicaciones con ofensas se rechazan automáticamente.
+                </p>
+              </div>
+
+              <div className="h-10" />
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <TestimonialsFeed />
+              </div>
+            </div>
+          </Collapsible>
         </div>
+      </section>
 
-        <div className="h-10" />
-
-        <div className="grid gap-6 md:grid-cols-2">
-          <TestimonialsFeed />
-        </div>
-      </div>
-    </Collapsible>
-  </div>
-</section>
-      {/* SOBRE MARIANA — CREMA — pestaña cerrada */}
-      <section id="cv" style={{ background: "var(--cream)" }}>
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <Collapsible title="Sobre Mariana" defaultOpen={false}>
+      {/* SOBRE MARIANA — ahora FONDO BLANCO */}
+      <section id="cv" className="py-16 bg-white">
+        <div className="mx-auto max-w-6xl px-6">
+          <Collapsible title="Sobre Mariana" defaultOpen>
             <p className="opacity-80">
               “Limpieza profesional que transforma tu hogar en salud, bienestar y cuidado real.”
             </p>
@@ -195,10 +197,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTACTO — BLANCO — pestaña cerrada */}
-      <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <Collapsible title="Contacto" defaultOpen={false}>
+      {/* CONTACTO — ahora FONDO CREMA */}
+      <section className="py-16" style={{ background: "var(--cream)" }}>
+        <div className="mx-auto max-w-6xl px-6">
+          <Collapsible title="Contacto" defaultOpen>
             <p className="mt-1">
               Tampa Bay, FL — Tel:{" "}
               <a className="underline" href="tel:+18138179146">813 8179146</a>
