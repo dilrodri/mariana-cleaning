@@ -2,14 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { createClient } from "@supabase/supabase-js";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-// Si ya tienes un cliente compartido, puedes importar desde src/lib/supabaseClient
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { supabase } from "@/lib/supabaseClient";
 
 export type GalleryCarouselProps = {
   bucket: string;          // nombre del bucket (bymariana)
@@ -111,12 +105,12 @@ export default function GalleryCarousel({
     );
   }
   if (!items.length) {
-    return (
-      <div className={`grid place-items-center ${className} ${rounded} bg-[var(--rose)]/20`}>
-        No hay imágenes en {bucket}/{prefix || ""}
-      </div>
-    );
-  }
+  return (
+    <div className={`grid place-items-center ${className} ${rounded} bg-[var(--rose)]/20`}>
+      No hay imágenes en {bucket}/{prefix || "(raíz)"}.
+    </div>
+  );
+}
 
   const current = items[index];
 
